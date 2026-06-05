@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff1f2;
+  --foreground: #7f1d1d;
+  --surface: rgba(255, 255, 255, 0.96);
+  --surface-strong: #fee2e2;
+  --surface-border: #fca5a5;
+  --accent: #b91c1c;
+  --accent-dark: #7f1d1d;
+  --accent-soft: #fecaca;
+  --muted: #991b1b;
 }
 
 @theme inline {
@@ -12,15 +19,96 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, rgba(254, 202, 202, 0.48), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(185, 28, 28, 0.12), transparent 30%),
+    linear-gradient(180deg, #fff1f2 0%, #fee2e5 100%);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+.bg-slate-50 {
+  background-color: #fff1f2 !important;
+}
+
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.bg-slate-950 {
+  background-color: #7f1d1d !important;
+}
+
+.bg-slate-900 {
+  background-color: #991b1b !important;
+}
+
+.bg-slate-800 {
+  background-color: #b91c1c !important;
+}
+
+.bg-slate-700 {
+  background-color: #dc2626 !important;
+}
+
+.bg-slate-500 {
+  background-color: #f87171 !important;
+}
+
+.bg-slate-200 {
+  background-color: #fecaca !important;
+}
+
+.bg-emerald-100 {
+  background-color: #fee2e2 !important;
+}
+
+.text-slate-900 {
+  color: #7f1d1d !important;
+}
+
+.text-slate-700 {
+  color: #9f1239 !important;
+}
+
+.text-slate-600 {
+  color: #b91c1c !important;
+}
+
+.text-slate-500 {
+  color: #991b1b !important;
+}
+
+.text-slate-400 {
+  color: #ef4444 !important;
+}
+
+.border-slate-200 {
+  border-color: #fca5a5 !important;
+}
+
+.hover\:bg-slate-100:hover {
+  background-color: #fee2e2 !important;
+}
+
+.hover\:bg-slate-800:hover {
+  background-color: #991b1b !important;
+}
+
+.hover\:bg-slate-50:hover {
+  background-color: #ffe4e6 !important;
+}
+
+.hover\:border-slate-300:hover {
+  border-color: #fca5a5 !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 16px 48px rgba(185, 28, 28, 0.08);
 }
