@@ -93,110 +93,160 @@ export default function Home() {
       title="Dashboard"
       description="Monitor sales, manage menus, process orders, organize reservations, and run the business from one admin experience."
     >
-      <section className="grid gap-4 xl:grid-cols-[1fr_340px]">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {overviewStats.map((stat) => (
-            <Card key={stat.label} className="p-6">
-              <p className="text-sm font-medium text-red-600">{stat.label}</p>
-              <p className="mt-4 text-3xl font-semibold text-red-950">{stat.value}</p>
-              <p className="mt-2 text-sm text-red-600">{stat.change}</p>
-            </Card>
-          ))}
-        </div>
+      <section className="grid gap-6 xl:grid-cols-[1.4fr_0.86fr]">
+        <Card className="overflow-hidden">
+          <div className="bg-[radial-gradient(circle_at_top_left,_rgba(248,113,113,0.18),_transparent_28%)] px-6 py-8 sm:px-8">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-sm uppercase tracking-[0.34em] text-red-600">Restaurant pulse</p>
+                <h2 className="mt-3 text-3xl font-semibold text-red-950 sm:text-4xl">
+                  Executive dashboard for restaurant operations
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-red-600 sm:text-base">
+                  See the most important restaurant metrics in one polished workspace, with fast access to order, menu, inventory, and staff workflows.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Button size="sm">New order</Button>
+                <Button size="sm" variant="outline">
+                  Add menu item
+                </Button>
+              </div>
+            </div>
+          </div>
 
-        <aside className="space-y-4">
+          <CardContent className="grid gap-4 p-6 md:grid-cols-3">
+            {overviewStats.map((stat) => (
+              <Card
+                key={stat.label}
+                className="rounded-[1.75rem] border-red-100 bg-white/95 p-5 shadow-[0_20px_60px_rgba(185,28,28,0.08)]"
+              >
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">
+                  {stat.label}
+                </p>
+                <p className="mt-4 text-3xl font-semibold text-red-950">{stat.value}</p>
+                <p className="mt-2 text-sm text-red-600">{stat.change}</p>
+              </Card>
+            ))}
+          </CardContent>
+        </Card>
+
+        <div className="space-y-4">
           <Card className="p-6">
-            <div className="flex items-center justify-between gap-4">
+            <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm font-medium text-red-600">Revenue Forecast</p>
-                <p className="mt-2 text-2xl font-semibold text-red-950">$68.4k</p>
+                <CardTitle className="text-lg">Revenue forecast</CardTitle>
+                <CardDescription>
+                  Forecasted sales based on current orders and peak hours.
+                </CardDescription>
               </div>
-              <Badge className="rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-700">+14%</Badge>
-            </div>
-            <div className="mt-6 space-y-3">
-              <div className="h-2 overflow-hidden rounded-full bg-red-100">
-                <div className="h-full w-[72%] rounded-full bg-red-700" />
+              <Badge variant="outline">+14%</Badge>
+            </CardHeader>
+
+            <CardContent className="space-y-4">
+              <div className="space-y-4">
+                <div className="rounded-3xl bg-red-50 p-4">
+                  <div className="flex items-center justify-between text-sm text-red-700">
+                    <span>Today</span>
+                    <span className="font-semibold text-red-950">$68.4k</span>
+                  </div>
+                  <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-red-100">
+                    <div className="h-full w-[72%] rounded-full bg-red-700" />
+                  </div>
+                </div>
+                <div className="rounded-3xl bg-red-50 p-4">
+                  <div className="flex items-center justify-between text-sm text-red-700">
+                    <span>Projected week</span>
+                    <span className="font-semibold text-red-950">$312k</span>
+                  </div>
+                  <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-red-100">
+                    <div className="h-full w-[82%] rounded-full bg-red-700" />
+                  </div>
+                </div>
               </div>
-              <div className="h-2 overflow-hidden rounded-full bg-red-100">
-                <div className="h-full w-[54%] rounded-full bg-red-500" />
-              </div>
-              <div className="h-2 overflow-hidden rounded-full bg-red-100">
-                <div className="h-full w-[86%] rounded-full bg-red-300" />
-              </div>
-            </div>
+            </CardContent>
           </Card>
 
           <Card className="p-6">
-            <p className="text-sm font-medium text-red-600">Quick Actions</p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <CardHeader>
+              <CardTitle>Quick actions</CardTitle>
+              <CardDescription>Access the most common operational workflows fast.</CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-3 sm:grid-cols-2">
               {quickActions.map((action) => (
                 <Button
                   key={action}
                   variant="secondary"
                   size="sm"
-                  className="w-full justify-start text-left"
+                  className="w-full justify-start px-4 text-left"
                 >
                   {action}
                 </Button>
               ))}
-            </div>
+            </CardContent>
           </Card>
-        </aside>
+        </div>
       </section>
 
-      <section className="mt-6 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
+      <section className="mt-6 grid gap-4 xl:grid-cols-[1.3fr_0.7fr]">
         <Card className="p-6">
-          <div className="flex items-center justify-between gap-4">
+          <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <CardTitle className="text-xl">Sales & menu performance</CardTitle>
-              <CardDescription>Revenue trends, best sellers, and peak order times in one view.</CardDescription>
+              <CardTitle>Sales performance</CardTitle>
+              <CardDescription>Top items and order momentum for the last 24 hours.</CardDescription>
             </div>
             <Badge variant="outline">Live</Badge>
-          </div>
+          </CardHeader>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {popularItems.map((item) => (
-              <Card key={item.name} className="rounded-3xl border-red-200 bg-red-50 p-4 shadow-none">
-                <p className="font-medium text-red-950">{item.name}</p>
-                <p className="mt-2 text-sm text-red-600">Sold {item.sold} times today</p>
-              </Card>
-            ))}
-          </div>
-
-          <div className="mt-6 rounded-3xl bg-red-950 p-5 text-white">
-            <p className="text-sm uppercase tracking-[0.25em] text-red-200">Revenue Chart</p>
-            <div className="mt-5 grid gap-3">
-              {[72, 50, 85, 60, 95, 70, 82].map((value, index) => (
-                <div key={index} className="flex items-end gap-3">
-                  <div className="h-20 w-full rounded-full bg-red-800" style={{ height: `${value}%` }} />
-                  <span className="min-w-[24px] text-sm text-red-200">{value}%</span>
-                </div>
+          <CardContent className="grid gap-4">
+            <div className="grid gap-4 sm:grid-cols-2">
+              {popularItems.map((item) => (
+                <Card
+                  key={item.name}
+                  className="rounded-[1.75rem] border-red-100 bg-red-50 p-4 shadow-none"
+                >
+                  <p className="font-semibold text-red-950">{item.name}</p>
+                  <p className="mt-2 text-sm text-red-600">Sold {item.sold} times today</p>
+                </Card>
               ))}
             </div>
-          </div>
+
+            <div className="rounded-[1.75rem] bg-red-950 p-5 text-white">
+              <div className="flex items-center justify-between gap-4 text-sm uppercase tracking-[0.25em] text-red-200">
+                <span>Revenue trend</span>
+                <span className="font-semibold">+18% vs yesterday</span>
+              </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-7">
+                {[72, 50, 85, 60, 95, 70, 82].map((value, index) => (
+                  <div key={index} className="flex flex-col items-center gap-2">
+                    <div className="h-24 w-full rounded-full bg-red-800" style={{ height: `${value}%` }} />
+                    <span className="text-xs text-red-200">{index + 1}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </CardContent>
         </Card>
 
-        <div className="space-y-4">
-          {featureSections.slice(0, 3).map((section) => (
-            <Card key={section.title} className="p-6">
-              <h3 className="text-lg font-semibold text-red-950">{section.title}</h3>
-              <ul className="mt-4 space-y-3 text-sm text-red-600">
-                {section.items.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-red-700" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          ))}
-        </div>
+        <Card className="p-6">
+          <CardHeader>
+            <CardTitle>Operations summary</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {featureSections.slice(0, 3).map((section) => (
+              <div key={section.title} className="rounded-[1.75rem] bg-red-50 p-4">
+                <p className="font-semibold text-red-950">{section.title}</p>
+                <p className="mt-2 text-sm text-red-600">{section.items.slice(0, 2).join(" • ")}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
       </section>
 
       <section className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {featureSections.slice(3).map((section) => (
           <Card key={section.title} className="p-6">
-            <h3 className="text-lg font-semibold text-red-950">{section.title}</h3>
+            <CardTitle>{section.title}</CardTitle>
             <ul className="mt-4 space-y-3 text-sm text-red-600">
               {section.items.map((item) => (
                 <li key={item} className="flex items-start gap-3">
@@ -212,7 +262,7 @@ export default function Home() {
       <Card className="mt-8 p-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-red-600">Admin Settings</p>
+            <p className="text-sm uppercase tracking-[0.3em] text-red-600">Admin settings</p>
             <h2 className="mt-3 text-2xl font-semibold text-red-950">Business controls and restaurant policies</h2>
             <p className="mt-2 text-red-600">
               Configure business info, payment methods, operating hours, tax rules, and user permissions from a single control panel.
