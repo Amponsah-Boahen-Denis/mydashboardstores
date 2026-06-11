@@ -94,7 +94,7 @@ export default function Home() {
       description="Monitor sales, manage menus, process orders, organize reservations, and run the business from one admin experience."
     >
       <section className="grid gap-6 xl:grid-cols-[1.4fr_0.86fr]">
-        <Card className="overflow-hidden">
+        <Card variant="elevated" padding="none">
           <div className="bg-[radial-gradient(circle_at_top_left,_rgba(248,113,113,0.18),_transparent_28%)] px-6 py-8 sm:px-8">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-2xl">
@@ -115,70 +115,71 @@ export default function Home() {
             </div>
           </div>
 
-          <CardContent className="grid gap-4 p-6 md:grid-cols-3">
+          <CardContent className="grid gap-4 pt-6 md:grid-cols-3">
             {overviewStats.map((stat) => (
               <Card
                 key={stat.label}
-                className="rounded-[1.75rem] border-red-100 bg-white/95 p-5 shadow-[0_20px_60px_rgba(185,28,28,0.08)]"
+                variant="interactive"
+                padding="tight"
               >
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-red-600">
                   {stat.label}
                 </p>
-                <p className="mt-4 text-3xl font-semibold text-red-950">{stat.value}</p>
-                <p className="mt-2 text-sm text-red-600">{stat.change}</p>
+                <p className="mt-3 text-2xl font-bold text-red-950">{stat.value}</p>
+                <p className="mt-2 text-xs text-red-600">{stat.change}</p>
               </Card>
             ))}
           </CardContent>
         </Card>
 
         <div className="space-y-4">
-          <Card className="p-6">
-            <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <CardTitle className="text-lg">Revenue forecast</CardTitle>
-                <CardDescription>
-                  Forecasted sales based on current orders and peak hours.
-                </CardDescription>
+          <Card variant="default">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle>Revenue forecast</CardTitle>
+                  <CardDescription>
+                    Sales based on current orders and peak hours.
+                  </CardDescription>
+                </div>
+                <Badge variant="outline">+14%</Badge>
               </div>
-              <Badge variant="outline">+14%</Badge>
             </CardHeader>
 
-            <CardContent className="space-y-4">
-              <div className="space-y-4">
-                <div className="rounded-3xl bg-red-50 p-4">
-                  <div className="flex items-center justify-between text-sm text-red-700">
-                    <span>Today</span>
-                    <span className="font-semibold text-red-950">$68.4k</span>
-                  </div>
-                  <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-red-100">
-                    <div className="h-full w-[72%] rounded-full bg-red-700" />
-                  </div>
+            <CardContent className="space-y-3 pt-4">
+              <div className="rounded-xl bg-red-50 p-4">
+                <div className="flex items-center justify-between text-sm text-red-700">
+                  <span className="font-medium">Today</span>
+                  <span className="font-bold text-red-950">$68.4k</span>
                 </div>
-                <div className="rounded-3xl bg-red-50 p-4">
-                  <div className="flex items-center justify-between text-sm text-red-700">
-                    <span>Projected week</span>
-                    <span className="font-semibold text-red-950">$312k</span>
-                  </div>
-                  <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-red-100">
-                    <div className="h-full w-[82%] rounded-full bg-red-700" />
-                  </div>
+                <div className="mt-3 h-2 overflow-hidden rounded-full bg-red-100">
+                  <div className="h-full w-[72%] rounded-full bg-red-700" />
+                </div>
+              </div>
+              <div className="rounded-xl bg-red-50 p-4">
+                <div className="flex items-center justify-between text-sm text-red-700">
+                  <span className="font-medium">Projected week</span>
+                  <span className="font-bold text-red-950">$312k</span>
+                </div>
+                <div className="mt-3 h-2 overflow-hidden rounded-full bg-red-100">
+                  <div className="h-full w-[82%] rounded-full bg-red-700" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="p-6">
+          <Card variant="default">
             <CardHeader>
               <CardTitle>Quick actions</CardTitle>
-              <CardDescription>Access the most common operational workflows fast.</CardDescription>
+              <CardDescription>Access common workflows fast.</CardDescription>
             </CardHeader>
-            <CardContent className="grid gap-3 sm:grid-cols-2">
+            <CardContent className="grid gap-2 pt-4 sm:grid-cols-2">
               {quickActions.map((action) => (
                 <Button
                   key={action}
                   variant="secondary"
                   size="sm"
-                  className="w-full justify-start px-4 text-left"
+                  className="w-full justify-start"
                 >
                   {action}
                 </Button>
@@ -189,21 +190,24 @@ export default function Home() {
       </section>
 
       <section className="mt-6 grid gap-4 xl:grid-cols-[1.3fr_0.7fr]">
-        <Card className="p-6">
-          <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <CardTitle>Sales performance</CardTitle>
-              <CardDescription>Top items and order momentum for the last 24 hours.</CardDescription>
+        <Card variant="elevated">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle>Sales performance</CardTitle>
+                <CardDescription>Top items and order momentum for the last 24 hours.</CardDescription>
+              </div>
+              <Badge variant="outline">Live</Badge>
             </div>
-            <Badge variant="outline">Live</Badge>
           </CardHeader>
 
-          <CardContent className="grid gap-4">
+          <CardContent className="space-y-6 pt-6">
             <div className="grid gap-4 sm:grid-cols-2">
               {popularItems.map((item) => (
                 <Card
                   key={item.name}
-                  className="rounded-[1.75rem] border-red-100 bg-red-50 p-4 shadow-none"
+                  variant="muted"
+                  padding="tight"
                 >
                   <p className="font-semibold text-red-950">{item.name}</p>
                   <p className="mt-2 text-sm text-red-600">Sold {item.sold} times today</p>
@@ -211,15 +215,15 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="rounded-[1.75rem] bg-red-950 p-5 text-white">
+            <div className="rounded-xl bg-red-950 p-5 text-white">
               <div className="flex items-center justify-between gap-4 text-sm uppercase tracking-[0.25em] text-red-200">
                 <span>Revenue trend</span>
                 <span className="font-semibold">+18% vs yesterday</span>
               </div>
-              <div className="mt-5 grid gap-3 sm:grid-cols-7">
+              <div className="mt-5 grid gap-2 sm:grid-cols-7">
                 {[72, 50, 85, 60, 95, 70, 82].map((value, index) => (
                   <div key={index} className="flex flex-col items-center gap-2">
-                    <div className="h-24 w-full rounded-full bg-red-800" style={{ height: `${value}%` }} />
+                    <div className="w-full rounded-lg bg-red-800" style={{ height: `${value / 5}px` }} />
                     <span className="text-xs text-red-200">{index + 1}</span>
                   </div>
                 ))}
@@ -228,16 +232,16 @@ export default function Home() {
           </CardContent>
         </Card>
 
-        <Card className="p-6">
+        <Card variant="default">
           <CardHeader>
             <CardTitle>Operations summary</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-3 pt-4">
             {featureSections.slice(0, 3).map((section) => (
-              <div key={section.title} className="rounded-[1.75rem] bg-red-50 p-4">
+              <Card key={section.title} variant="muted" padding="tight">
                 <p className="font-semibold text-red-950">{section.title}</p>
-                <p className="mt-2 text-sm text-red-600">{section.items.slice(0, 2).join(" • ")}</p>
-              </div>
+                <p className="mt-2 text-xs text-red-600">{section.items.slice(0, 2).join(" • ")}</p>
+              </Card>
             ))}
           </CardContent>
         </Card>
@@ -245,13 +249,13 @@ export default function Home() {
 
       <section className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {featureSections.slice(3).map((section) => (
-          <Card key={section.title} className="p-6">
-            <CardTitle>{section.title}</CardTitle>
-            <ul className="mt-4 space-y-3 text-sm text-red-600">
+          <Card key={section.title} variant="default">
+            <CardTitle className="mb-4">{section.title}</CardTitle>
+            <ul className="space-y-3 text-sm text-red-600">
               {section.items.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-red-700" />
-                  <span>{item}</span>
+                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-700 flex-shrink-0" />
+                  <span className="leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>
@@ -259,16 +263,16 @@ export default function Home() {
         ))}
       </section>
 
-      <Card className="mt-8 p-8">
+      <Card variant="elevated" className="mt-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-red-600">Admin settings</p>
             <h2 className="mt-3 text-2xl font-semibold text-red-950">Business controls and restaurant policies</h2>
-            <p className="mt-2 text-red-600">
+            <p className="mt-2 text-sm text-red-600">
               Configure business info, payment methods, operating hours, tax rules, and user permissions from a single control panel.
             </p>
           </div>
-          <div className="grid gap-2 sm:grid-cols-2 lg:gap-3">
+          <div className="flex flex-wrap gap-2 sm:flex-nowrap lg:gap-3">
             <Button>View Admin Settings</Button>
             <Button variant="outline">Export Report</Button>
           </div>
